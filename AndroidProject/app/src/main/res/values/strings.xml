@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ArousingTimer</string>
+
+    <string name="title_overlay_timer_service">Overlay Timer Service</string>
+
+    <string name="btn_on_timer_text">O N</string>
+    <string name="btn_off_timer_text">O F F</string>
+</resources>
