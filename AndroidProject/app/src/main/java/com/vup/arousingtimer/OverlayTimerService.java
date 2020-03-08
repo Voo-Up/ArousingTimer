@@ -15,6 +15,7 @@ public class OverlayTimerService extends Service {
 
     private OverlayTimerView overlayTimerView;
     private WindowManager mManager;
+    private WindowManager.LayoutParams mParams;
 
     @Override
     public void onCreate() {
@@ -23,15 +24,18 @@ public class OverlayTimerService extends Service {
         Button btn = new Button(OverlayTimerService.this);
         btn.setText("TLQLKFD");
 
-        WindowManager.LayoutParams mParams = new WindowManager.LayoutParams(
+        mParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION_PANEL,
-                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, //이 타입으로 생성해야 함
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                        |WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+                        |WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE // OverlayTimerView 이외에 터치 가능한 flag
+                        |WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 PixelFormat.TRANSLUCENT);
 
         mManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        mManager.addView(btn, mParams);
+        mManager.addView(overlayTimerView, mParams);
     }
 
     @Override

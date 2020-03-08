@@ -14,11 +14,18 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     final private String TAG = "MainActivity";
 
+    final private int REQ_CODE_OVERLAY_PERMISSION = 0;
     Button btnOnTimer;
     Button btnOffTimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && !Settings.canDrawOverlays(this)) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, REQ_CODE_OVERLAY_PERMISSION);
+        }
+
         setContentView(R.layout.activity_main);
 
         btnOnTimer = (Button)findViewById(R.id.btn_on_timer);
@@ -28,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Service START");
-                    startService(new Intent(getApplicationContext(), OverlayTimerService.class));
+                startService(new Intent(getApplicationContext(), OverlayTimerService.class));
             }
         });
 
@@ -39,5 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 stopService(new Intent(getApplicationContext(), OverlayTimerService.class));
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE_OVERLAY_PERMISSION) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (Settings.canDrawOverlays(this)) {
+                    return;
+                } else {
+                    finish();
+                }
+            }
+        }
     }
 }
