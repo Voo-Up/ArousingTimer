@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -24,10 +26,10 @@ public class OverlayTimerView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Paint paint = new Paint(); // 페인트 객체 생성
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG); // 페인트 객체 생성 + 안티에일리어싱
         paint.setColor(Color.RED); // 빨간색으로 설정
-
-        canvas.drawRect(100, 100, 200, 200, paint);
+        paint.setAlpha(50); // 투명도 추가해봄
+        canvas.drawRect(100, 100, 400, 400, paint);
     }
 
     @Override

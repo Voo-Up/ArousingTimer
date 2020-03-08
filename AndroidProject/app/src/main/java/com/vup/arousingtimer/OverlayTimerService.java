@@ -1,13 +1,10 @@
 package com.vup.arousingtimer;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
-import android.view.LayoutInflater;
 import android.view.WindowManager;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
@@ -21,8 +18,6 @@ public class OverlayTimerService extends Service {
     public void onCreate() {
         super.onCreate();
         overlayTimerView = new OverlayTimerView(OverlayTimerService.this);
-        Button btn = new Button(OverlayTimerService.this);
-        btn.setText("TLQLKFD");
 
         mParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
