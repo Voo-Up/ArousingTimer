@@ -13,8 +13,9 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class OverlayTimerView extends View {
+public class OverlayTimerView extends View implements View.OnTouchListener{
     final private String TAG = "OverlayTimerView";
+    private int mThickness = 10;
     public OverlayTimerView(Context context) {
         super(context);
     }
@@ -23,22 +24,33 @@ public class OverlayTimerView extends View {
         super(context, attrs);
     }
 
+    public int getmThickness() {
+        return mThickness;
+    }
+
+    public void setmThickness(int mThickness) {
+        this.mThickness = mThickness;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG); // 페인트 객체 생성 + 안티에일리어싱
-        paint.setColor(Color.RED); // 빨간색으로 설정
-        paint.setAlpha(50); // 투명도 추가해봄
-        canvas.drawRect(100, 100, 400, 400, paint);
+        paint.setColor(getResources().getColor(R.color.primaryColor)); // 빨간색으로 설정
+        paint.setAlpha(80); // 투명도 추가해봄
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(mThickness);
+        canvas.drawRect(130, 514, 400, 400, paint);
+    }
+
+    public void renewThickness(int thicnkess){
+        setmThickness(thicnkess);
+        invalidate();
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                Log.i(TAG, "TOUCH DOWN");
-                break;
-        }
-        return super.onTouchEvent(event);
+    public boolean onTouch(View v, MotionEvent event) {
+        Log.i(TAG, "ASDFASDF");
+        return true;
     }
 }

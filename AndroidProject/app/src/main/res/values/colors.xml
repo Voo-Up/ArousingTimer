@@ -10,5 +10,6 @@
     <color name="secondaryTextColor">#0091ea</color>
 
     <color name="background">#ffffffff</color>
+    <color name="onBackgroundLight">#9A212121</color>
     <color name="onBackground">#212121</color>
 </resources>
