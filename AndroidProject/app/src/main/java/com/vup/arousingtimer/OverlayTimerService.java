@@ -29,8 +29,8 @@ public class OverlayTimerService extends Service {
         overlayTimerView = new OverlayTimerView(OverlayTimerService.this);
 
         mParams = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, //이 타입으로 생성해야 함
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                         |WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN

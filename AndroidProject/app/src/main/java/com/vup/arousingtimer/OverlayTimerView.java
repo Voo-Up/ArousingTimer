@@ -13,7 +13,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class OverlayTimerView extends View implements View.OnTouchListener{
+public class OverlayTimerView extends View{
     final private String TAG = "OverlayTimerView";
     private int mThickness = 10;
     public OverlayTimerView(Context context) {
@@ -40,7 +40,8 @@ public class OverlayTimerView extends View implements View.OnTouchListener{
         paint.setAlpha(80); // 투명도 추가해봄
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(mThickness);
-        canvas.drawRect(130, 514, 400, 400, paint);
+        paint.setFilterBitmap(true);
+        canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
     }
 
     public void renewThickness(int thicnkess){
@@ -48,9 +49,4 @@ public class OverlayTimerView extends View implements View.OnTouchListener{
         invalidate();
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        Log.i(TAG, "ASDFASDF");
-        return true;
-    }
 }
