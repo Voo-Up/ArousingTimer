@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 public class OverlayTimerView extends View{
     final private String TAG = "OverlayTimerView";
-    private int mThickness = 10;
+    private int mThickness = 100;
     public OverlayTimerView(Context context) {
         super(context);
     }
