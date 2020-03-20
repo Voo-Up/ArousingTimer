@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itm_areatimer"
+        android:title="@string/menu_areatimer"
+        android:icon="@drawable/ic_area_timer"
+        android:checked="true"/>
+    <item
+        android:id="@+id/itm_manual"
+        android:title="@string/menu_manual"
+        android:icon="@drawable/ic_manual"/>
+    <item
+        android:id="@+id/itm_another"
+        android:title="@string/menu_another"
+        android:icon="@drawable/ic_more" />
+</menu>

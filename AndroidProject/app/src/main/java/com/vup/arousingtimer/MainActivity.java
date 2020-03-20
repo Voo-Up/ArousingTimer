@@ -1,6 +1,8 @@
 package com.vup.arousingtimer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,17 +19,21 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements ScreenCallback {
     final private String TAG = "MainActivity";
     final private int REQ_CODE_OVERLAY_PERMISSION = 0;
 
     private AdView mAdView;
-    private Button btnOnTimer;
-    private Button btnOffTimer;
-    private boolean isServiceActivate = false;
 
+    private boolean isServiceActivate = false;
     private ScreenStateReceiver screenStateReceiver;
+
+    private ViewPager vpContainer;
+    private BottomNavigationView botnavMain;
+    private MenuItem prevBottomNavigationItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,24 +46,52 @@ public class MainActivity extends AppCompatActivity implements ScreenCallback {
         loadAdmob();
         setScreenStateMonitor();
 
-        btnOnTimer = (Button)findViewById(R.id.btn_on_timer);
-        btnOffTimer = (Button)findViewById(R.id.btn_off_timer);
+        vpContainer = (ViewPager)findViewById(R.id.container);
+        botnavMain = (BottomNavigationView)findViewById(R.id.botnav_main);
 
-        btnOnTimer.setOnClickListener(new View.OnClickListener() {
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), 3);
+        vpContainer.setAdapter(sectionsPagerAdapter);
+        vpContainer.setCurrentItem(0);
+        prevBottomNavigationItem = botnavMain.getMenu().getItem(0);
+        botnavMain.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Service START");
-                isServiceActivate = true;
-                startService(new Intent(getApplicationContext(), OverlayTimerService.class));
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.itm_areatimer:
+                        Log.i(TAG, "Select Item 1");
+                        vpContainer.setCurrentItem(0);
+                        return true;
+                    case R.id.itm_manual:
+                        Log.i(TAG, "Select Item 2");
+                        vpContainer.setCurrentItem(1);
+                        return true;
+                    case R.id.itm_another:
+                        Log.i(TAG, "Select Item 3");
+                        vpContainer.setCurrentItem(2);
+                        return true;
+                }
+                return false;
             }
         });
 
-        btnOffTimer.setOnClickListener(new View.OnClickListener() {
+        vpContainer.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Service END");
-                isServiceActivate = false;
-                stopService(new Intent(getApplicationContext(), OverlayTimerService.class));
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevBottomNavigationItem != null) {
+                    prevBottomNavigationItem.setChecked(false);
+                }
+                prevBottomNavigationItem = botnavMain.getMenu().getItem(position);
+                prevBottomNavigationItem.setChecked(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
