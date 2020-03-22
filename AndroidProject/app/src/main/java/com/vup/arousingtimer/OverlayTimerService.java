@@ -7,8 +7,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -20,8 +18,6 @@ public class OverlayTimerService extends Service {
     private WindowManager.LayoutParams mParams;
 
     private Handler mHandler;
-
-    private int mThickness = 10;
 
     @Override
     public void onCreate() {
@@ -44,14 +40,19 @@ public class OverlayTimerService extends Service {
 
         // Param is optional, to run task on UI thread.
         mHandler = new Handler(Looper.getMainLooper());
-        Runnable runnable = new Runnable() {
+        final Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 // Do the task...
-                Log.i(TAG, "every 3000");
+                Log.i(TAG, "every 1000");
                 mHandler.postDelayed(this, 1000); // Optional, to repeat the task.
-                overlayTimerView.setmThickness(overlayTimerView.getmThickness() + 10);
-                overlayTimerView.invalidate();
+                if(overlayTimerView.nextEnlargeStep()) {
+                    overlayTimerView.invalidate();
+                }
+                else{
+                    Log.i(TAG, "full screen");
+                    mHandler.removeCallbacks(this);
+                }
             }
         };
         mHandler.postDelayed(runnable, 1000);
@@ -61,6 +62,8 @@ public class OverlayTimerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        int enlargeSpeed = intent.getIntExtra("enlarge_speed", 1);
+        overlayTimerView.setMinute(enlargeSpeed);
         return super.onStartCommand(intent, flags, startId);
     }
 

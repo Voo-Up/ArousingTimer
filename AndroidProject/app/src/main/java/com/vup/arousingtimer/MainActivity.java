@@ -21,14 +21,14 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements ScreenCallback {
+public class MainActivity extends AppCompatActivity {
     final private String TAG = "MainActivity";
     final private int REQ_CODE_OVERLAY_PERMISSION = 0;
 
     private AdView mAdView;
 
     private boolean isServiceActivate = false;
-    private ScreenStateReceiver screenStateReceiver;
+
 
     private ViewPager vpContainer;
     private BottomNavigationView botnavMain;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements ScreenCallback {
         }
         setContentView(R.layout.activity_main);
         loadAdmob();
-        setScreenStateMonitor();
+
 
         vpContainer = (ViewPager)findViewById(R.id.container);
         botnavMain = (BottomNavigationView)findViewById(R.id.botnav_main);
@@ -96,12 +96,6 @@ public class MainActivity extends AppCompatActivity implements ScreenCallback {
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(screenStateReceiver);
-    }
-
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQ_CODE_OVERLAY_PERMISSION) {
@@ -115,23 +109,13 @@ public class MainActivity extends AppCompatActivity implements ScreenCallback {
         }
     }
 
-    public void startOverlayTimerService() {
-        Log.i(TAG, "Service START");
-        startService(new Intent(getApplicationContext(), OverlayTimerService.class));
-    }
+
 
     public void stopOverlayTimerService() {
         Log.i(TAG, "Service END");
         stopService(new Intent(getApplicationContext(), OverlayTimerService.class));
     }
-    private void setScreenStateMonitor() {
-        screenStateReceiver = new ScreenStateReceiver();
-        screenStateReceiver.setScreenCallback(this);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_SCREEN_ON);
-        filter.addAction(Intent.ACTION_SCREEN_OFF);
-        registerReceiver(screenStateReceiver, filter);
-    }
+
 
     private void loadAdmob() {
         MobileAds.initialize(this, getString(R.string.admob_app_id));
@@ -179,19 +163,5 @@ public class MainActivity extends AppCompatActivity implements ScreenCallback {
             }
 
         });
-    }
-
-    @Override
-    public void screenOn() {
-        Log.i(TAG, "screenOn");
-        if(isServiceActivate)
-            startService(new Intent(getApplicationContext(), OverlayTimerService.class));
-    }
-
-    @Override
-    public void screenOff() {
-        Log.i(TAG, "screenOff");
-        if(isServiceActivate)
-            stopService(new Intent(getApplicationContext(), OverlayTimerService.class));
     }
 }
