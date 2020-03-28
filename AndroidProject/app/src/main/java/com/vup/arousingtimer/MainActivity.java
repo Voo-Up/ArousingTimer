@@ -5,15 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -25,11 +22,9 @@ public class MainActivity extends AppCompatActivity {
     final private String TAG = "MainActivity";
     final private int REQ_CODE_OVERLAY_PERMISSION = 0;
 
-    private AdView mAdView;
-
     private boolean isServiceActivate = false;
 
-
+    private AdView mAdView;
     private ViewPager vpContainer;
     private BottomNavigationView botnavMain;
     private MenuItem prevBottomNavigationItem;
@@ -44,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         loadAdmob();
-
 
         vpContainer = (ViewPager)findViewById(R.id.container);
         botnavMain = (BottomNavigationView)findViewById(R.id.botnav_main);
