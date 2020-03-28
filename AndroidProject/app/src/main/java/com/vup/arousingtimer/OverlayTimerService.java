@@ -6,7 +6,9 @@ import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -37,6 +39,7 @@ public class OverlayTimerService extends Service {
         mManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mManager.addView(overlayTimerView, mParams);
 
+        //changeScreenBrightness(10);
 
         // Param is optional, to run task on UI thread.
         mHandler = new Handler(Looper.getMainLooper());
@@ -83,5 +86,9 @@ public class OverlayTimerService extends Service {
             mHandler.removeCallbacksAndMessages(null);
             mHandler = null;
         }
+    }
+
+    private void changeScreenBrightness(int brightValue) {
+        Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, brightValue);
     }
 }

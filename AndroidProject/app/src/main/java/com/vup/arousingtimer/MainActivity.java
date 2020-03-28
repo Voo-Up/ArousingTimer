@@ -2,9 +2,12 @@ package com.vup.arousingtimer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +40,21 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
             startActivityForResult(intent, REQ_CODE_OVERLAY_PERMISSION);
         }
+
+        boolean permission =false;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //permission = Settings.System.canWrite(getApplicationContext());
+            Log.i(TAG, "check permission for b : " + permission);
+        }
+
+        if(!permission) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+            intent.setData(Uri.parse("package:"+getPackageName()));
+            startActivityForResult(intent, 1);
+            permission = false;
+        }
+
+
         setContentView(R.layout.activity_main);
         loadAdmob();
 
@@ -102,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
     public void stopOverlayTimerService() {
         Log.i(TAG, "Service END");
