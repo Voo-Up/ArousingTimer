@@ -8,7 +8,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -20,6 +19,8 @@ public class OverlayTimerService extends Service {
     private WindowManager.LayoutParams mParams;
 
     private Handler mHandler;
+    private int currentBrightness;
+    private int decreasingBrightness;
 
     @Override
     public void onCreate() {
@@ -39,7 +40,7 @@ public class OverlayTimerService extends Service {
         mManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mManager.addView(overlayTimerView, mParams);
 
-        //changeScreenBrightness(10);
+        currentBrightness = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 50);
 
         // Param is optional, to run task on UI thread.
         mHandler = new Handler(Looper.getMainLooper());
@@ -51,6 +52,8 @@ public class OverlayTimerService extends Service {
                 mHandler.postDelayed(this, 1000); // Optional, to repeat the task.
                 if(overlayTimerView.nextEnlargeStep()) {
                     overlayTimerView.invalidate();
+                    decreasingBrightness -= decreasingBrightness / 10;
+                    changeScreenBrightness(decreasingBrightness);
                 }
                 else{
                     Log.i(TAG, "full screen");
@@ -59,8 +62,6 @@ public class OverlayTimerService extends Service {
             }
         };
         mHandler.postDelayed(runnable, 1000);
-
-
     }
 
     @Override
@@ -86,9 +87,10 @@ public class OverlayTimerService extends Service {
             mHandler.removeCallbacksAndMessages(null);
             mHandler = null;
         }
+        changeScreenBrightness(currentBrightness);
     }
 
-    private void changeScreenBrightness(int brightValue) {
-        Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, brightValue);
+    private void changeScreenBrightness(int brightnessValue) {
+        Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, brightnessValue);
     }
 }

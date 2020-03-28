@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean permission =false;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            //permission = Settings.System.canWrite(getApplicationContext());
+            permission = Settings.System.canWrite(getApplicationContext());
             Log.i(TAG, "check permission for b : " + permission);
         }
 
