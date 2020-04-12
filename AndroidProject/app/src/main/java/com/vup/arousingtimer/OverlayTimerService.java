@@ -91,6 +91,6 @@ public class OverlayTimerService extends Service {
     }
 
     private void changeScreenBrightness(int brightnessValue) {
-        Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, brightnessValue);
+        //Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, brightnessValue);
     }
 }
