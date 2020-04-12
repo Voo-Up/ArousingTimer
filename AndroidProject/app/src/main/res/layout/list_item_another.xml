@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:layout_marginVertical="16dp"
+    android:minHeight="72dp">
+
+    <ImageView
+        android:id="@+id/list_item_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_area_timer"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="8dp"
+        android:layout_toRightOf="@+id/list_item_icon">
+
+        <TextView
+            android:id="@+id/list_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:maxLines="1"
+            android:text="TEXT LINE NO 1"
+            android:layout_centerVertical="true"
+            android:textColor="@color/onBackground"/>
+
+        <TextView
+            android:id="@+id/list_item_secondary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:textSize="12dp"
+            android:maxLines="1"
+            android:text="TEXT LINE NO 2"
+            android:layout_centerVertical="true"
+            android:textColor="@color/onBackgroundLight"/>
+    </LinearLayout>
+
+</RelativeLayout>
