@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, REQ_CODE_OVERLAY_PERMISSION);
         }
 
+        /* Permission for changing brightness
         boolean permission =false;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             permission = Settings.System.canWrite(getApplicationContext());
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, 1);
             permission = false;
         }
-
+        */
 
         setContentView(R.layout.activity_main);
         loadAdmob();
