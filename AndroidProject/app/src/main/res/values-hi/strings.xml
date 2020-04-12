@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">फोन नीचे रखो</string>
+    <string name="title_overlay_timer_service">Overlay Timer Service</string>
+    <string name="btn_on_timer_text">O N</string>
+    <string name="btn_off_timer_text">O F F</string>
+    <string name="btn_color_picker">C O L O R</string>
+
+    <string name="admob_app_id">ca-app-pub-7673979477770497~6440083717</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7673979477770497/3962094188</string>
+    <string name="banner_ad_unit_id_for_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="menu_areatimer">क्षेत्र टाइमर</string>
+    <string name="menu_manual">गाइड</string>
+    <string name="menu_another">एक और</string>
+
+    <string name="text_manual_intro">
+        हम फोन को आदतन देखते हैं। उदाहरण के लिए, व्यायाम के दौरान आराम करना, अध्ययन करते समय संदेश देखना, शौचालय में कुछ करना आदि।
+        \n\n
+        यह एप्लिकेशन आदतन और सहजता से नाटकीय ढंग से सेल फोन को देखने में लगने वाले समय को कम कर सकता है। यह आपको नेत्रहीन के माध्यम से समय की अधिक शक्तिशाली पहचान दे सकता है।
+    </string>
+
+    <string name="text_manual_01">
+        \n
+        1. एरिया टाइमर का रंग तय करें।
+    </string>
+    <string name="text_manual_02">
+        \n
+        2. "Minute" सेट करें
+        \n
+        * Minute: समय से पहले क्षेत्र में सभी स्क्रीन शामिल हैं
+    </string>
+    <string name="text_manual_03">
+        \n
+        3. एरिया टाइमर शुरू करने के लिए "On" बटन दबाएं।
+    </string>
+
+    <string name="text_manual_outro">
+        \n\n
+        ब आप किसी फोन को आदतन देखते हैं, तो आप उस स्क्रीन को देख सकते हैं जो वास्तविक समय में छोटी हो जाती है और अपने फोन को जल्दी से नीचे रखने और महत्वपूर्ण काम करने के लिए सतर्क रहती है।
+        \n\n
+        क्षेत्र टाइमर को पुनरारंभ करने के लिए, आपको अपने सेल फोन को लॉक करना होगा और इसे फिर से अनलॉक करना होगा। अनलॉक के बाद, एरिया टाइमर पुनरारंभ होता है।
+        \n\n
+        एरिया टाइमर से पूरी तरह से बाहर निकलने के लिए "ऑफ" बटन पर क्लिक करें।
+    </string>
+
+    <string name="text_app_name_01">4 सफलता 5 असफलता घड़ी</string>
+    <string name="text_comment_01">परीक्षार्थी के लिए वास्तविक अध्ययन समय एप्लिकेशन।.</string>
+</resources>

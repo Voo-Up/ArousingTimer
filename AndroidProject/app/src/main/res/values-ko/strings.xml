@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Put Down Phone</string>
+    <string name="title_overlay_timer_service">Overlay Timer Service</string>
+    <string name="btn_on_timer_text">O N</string>
+    <string name="btn_off_timer_text">O F F</string>
+    <string name="btn_color_picker">C O L O R</string>
+
+    <string name="admob_app_id">ca-app-pub-7673979477770497~6440083717</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7673979477770497/3962094188</string>
+    <string name="banner_ad_unit_id_for_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="menu_areatimer">면적 타이머</string>
+    <string name="menu_manual">How To</string>
+    <string name="menu_another">다른앱</string>
+
+    <string name="text_manual_intro">
+        우리는 습관적으로 전화기를 본다. 예를들어 운동중 휴식, 공부하는 중 메세지 확인, 화장실에서 볼일 볼때 등.
+        \n\n
+        이 어플리케이션은 습관적으로 핸드폰을 보는 시간을 직관적이고 획기적으로 줄여줄 수 있다. 시간의 흐름을 문자가 아닌 면적을 통해 시각적으로 더 강력한 인지를 가능하게 한다.
+    </string>
+
+    <string name="text_manual_01">
+        \n
+
+1. Area Timer의 색을 결정한다.
+    </string>
+    <string name="text_manual_02">
+        \n
+        2. Minute를 설정한다
+        \n
+        *Minute : 면적이 화면을 모두 덮을 때 까지의 시간
+    </string>
+    <string name="text_manual_03">
+        \n
+        3. On버튼을 눌러 Area Timer를 시작한다
+    </string>
+
+    <string name="text_manual_outro">
+        \n\n
+        습관적으로 전화기를 볼 때 작아지는 화면을 실시간으로 지켜보며 핸드폰을 빨리 내려놓고 중요한 일을 해야 겠다는 경각심을 가질 수 있다.
+        \n\n
+        Area Timer를 초기화 하기 위해서는 핸드폰을 Lock한 뒤 다시 Unlock을 해야한다. Unlock 후에 Area Timer는 다시 시작한다.
+        \n\n
+        Area Timer를 완전히 종료하려면 Off 버튼을 클릭한다.
+    </string>
+
+    <string name="text_app_name_01">사당오락 타이머</string>
+    <string name="text_comment_01">수험생들을 위한 순공 타이머 앱입니다. 스마트폰으로 딴짓을 하면 타이머가 자동으로 멈추기 때문에 제대로된 순공 시간만을 기록할 수 있습니다.</string>
+</resources>

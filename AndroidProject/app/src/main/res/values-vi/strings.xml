@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Đặt điện thoại xuống</string>
+    <string name="title_overlay_timer_service">Overlay Timer Service</string>
+    <string name="btn_on_timer_text">O N</string>
+    <string name="btn_off_timer_text">O F F</string>
+    <string name="btn_color_picker">C O L O R</string>
+
+    <string name="admob_app_id">ca-app-pub-7673979477770497~6440083717</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7673979477770497/3962094188</string>
+    <string name="banner_ad_unit_id_for_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="menu_areatimer">Area Timer</string>
+    <string name="menu_manual">How To</string>
+    <string name="menu_another">Another</string>
+
+    <string name="text_manual_intro">
+        Chúng tôi nhìn vào điện thoại theo thói quen. Ví dụ, nghỉ ngơi trong khi tập thể dục, kiểm tra tin nhắn trong khi học, làm gì đó trong nhà vệ sinh và vv
+        \n\n
+        Ứng dụng này có thể giảm thời gian thường xuyên nhìn vào điện thoại di động một cách trực quan và đột ngột. Nó có thể cung cấp cho bạn sự công nhận mạnh mẽ hơn về thời gian thông qua trực quan.
+    </string>
+
+    <string name="text_manual_01">
+        \n
+        1. Quyết định "Color" của Timer Timer.
+    </string>
+    <string name="text_manual_02">
+        \n
+        2. Đặt "Minute"
+        \n
+        * Minute: Thời gian trước khi khu vực bao phủ tất cả các màn hình
+    </string>
+    <string name="text_manual_03">
+        \n
+        3. Nhấn nút "On" để bắt đầu Hẹn giờ khu vực.
+    </string>
+
+    <string name="text_manual_outro">
+        \n\n
+        Khi bạn nhìn vào điện thoại theo thói quen, bạn có thể xem màn hình nhỏ hơn theo thời gian thực và cảnh giác để nhanh chóng đặt điện thoại xuống và làm những việc quan trọng.
+        \n\n
+        Để khởi động lại bộ hẹn giờ khu vực, bạn phải khóa điện thoại di động và mở khóa lại. Sau khi mở khóa, Area Timer khởi động lại.
+        \n\n
+        Nhấp vào nút "Off" để thoát hoàn toàn Bộ đếm thời gian.
+    </string>
+
+    <string name="text_app_name_01">4 đậu 5 Loại hẹn giờ</string>
+    <string name="text_comment_01">Ứng dụng học tập thật sự dành cho người thi.</string>
+</resources>
