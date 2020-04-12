@@ -3,6 +3,8 @@
     <string name="title_overlay_timer_service">Overlay Timer Service</string>
     <string name="btn_on_timer_text">O N</string>
     <string name="btn_off_timer_text">O F F</string>
+    <string name="btn_color_picker">C O L O R</string>
+
     <string name="admob_app_id">ca-app-pub-7673979477770497~6440083717</string>
     <string name="banner_ad_unit_id">ca-app-pub-7673979477770497/3962094188</string>
     <string name="banner_ad_unit_id_for_test">ca-app-pub-3940256099942544/6300978111</string>

@@ -1,6 +1,7 @@
 package com.vup.arousingtimer;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -11,6 +12,8 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class OverlayTimerView extends View{
     final private String TAG = "OverlayTimerView";
     private int thickness = 0;
@@ -19,6 +22,7 @@ public class OverlayTimerView extends View{
 
     private int screenWidth;
     private int screenHeight;
+    private int recColor;
 
     public OverlayTimerView(Context context) {
         super(context);
@@ -26,6 +30,9 @@ public class OverlayTimerView extends View{
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
         screenHeight = size.y;
         screenWidth = size.x;
+        SharedPreferences colorPref = this.getContext().getSharedPreferences(AreatimerFragment.PREFERENCE, MODE_PRIVATE);
+        recColor = colorPref.getInt("recColor", R.color.primaryColor);
+
     }
 
     public OverlayTimerView(Context context, @Nullable AttributeSet attrs) {
@@ -54,7 +61,8 @@ public class OverlayTimerView extends View{
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG); // 페인트 객체 생성 + 안티에일리어싱
-        paint.setColor(getResources().getColor(R.color.primaryColor)); // 빨간색으로 설정
+        //paint.setColor(getResources().getColor(R.color.primaryColor)); // 빨간색으로 설정
+        paint.setColor(recColor);
         paint.setAlpha(95); // 투명도 추가해봄
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(thickness);
